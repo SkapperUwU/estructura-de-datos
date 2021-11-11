@@ -1,0 +1,36 @@
+package prueba;
+import java.util.Scanner;
+/**@author Ariana Rodriguez 3S12 */
+public class Prueba {
+    static class Nodo {String Nombre;
+                        Nodo sig;}
+    public static void mostrar(String name, Nodo next){
+        System.out.println(name + " ");
+        while (next != null) {
+            System.out.print(next.Nombre + " ");
+            next = next.sig;}}   
+    public static void main(String[] args) {
+        int opt;
+        Scanner sc = new Scanner(System.in);
+        Nodo inicio = null;
+        do {System.out.println("\n1- Agregar"
+                            + "\n2- Mostrar"
+                            + "\n3- Salir");
+                    switch(opt = sc.nextInt()){
+                            case 1:
+                                if (inicio==null){inicio = new Nodo();
+                                                    inicio.Nombre = "A";
+                                                    inicio.sig = null;
+                                                    System.out.println("Dato agregado");
+                                }else{Nodo temp;
+                                            temp = new Nodo();
+                                            temp.Nombre = "B";
+                                            temp.sig = inicio;
+                                            inicio = temp;}
+                            break;
+                            case 2:
+                                if (inicio==null){System.out.println("Lista vacia");
+                                }else {mostrar("\nLista", inicio);}
+                            break;} 
+        } while (opt != 3);}   
+}
