@@ -1,0 +1,126 @@
+package prueba;
+import java.util.Scanner;
+import java.util.Random;
+/**@author Ariana Rodriguez 3S12*/
+public class Prueba {
+
+    static class Nodo {String Nombre;
+                        Nodo sig;}
+    static Nodo inicio = null;
+    static Nodo temp = inicio;
+    static Scanner sc = new Scanner(System.in);
+
+    public static void mostrar(String Nombre, Nodo next){
+        System.out.println(Nombre + " ");
+        while (next != null) {
+            System.out.print(next.Nombre + " ");
+            next = next.sig;}}
+
+    public static void add(){
+        if (inicio == null){
+            inicio = new Nodo();
+            System.out.println("Agrega el valor");
+            int dato= sc.nextInt();
+            String c= dato+"";
+            inicio.Nombre = c;
+            inicio.sig = null;
+            System.out.println("Dato agregado");
+        }else{
+            Nodo temp;
+            temp = new Nodo();
+            System.out.println("Agrega el siguiente valor");
+            String dato = sc.nextLine();
+            String c= dato+"";
+            temp.Nombre = c;
+            temp.sig = inicio;
+            inicio = temp;
+            System.out.println("Dato agregado");
+        }}
+
+    public static void random() {
+        Random random = new Random();
+        char mayus = (char) (random.nextInt(26) + 'a');
+        mayus = Character.toUpperCase(mayus);
+        System.out.print(mayus);
+        for (int i = 0; i < 3; i++) {
+        int alnu = (int)(Math.random() * 57 + 48);
+        char calnu = (char)alnu;
+        System.out.print(calnu);} 
+        int asciiValue = (int) (Math.random() * 47 + 34);
+        char convertedChar = (char)asciiValue;
+        System.out.print(convertedChar);
+        System.out.println(" ");
+    }
+
+    public static void delete(String name) {
+        if (inicio == null) {
+            System.out.println("No hay datos para eliminar");
+        } else {
+            inicio = inicio;
+            while (inicio != null) {
+                if (inicio.Nombre == name) {
+                    if (inicio == inicio) {
+                        inicio = inicio.sig;
+                    }}
+                inicio = inicio.sig;}}}
+    
+    
+public static void bus() {
+        Scanner sc = new Scanner(System.in);
+        int con = 1;
+        Nodo temp = new Nodo();
+        Boolean Encontrar = false;
+        String valor;
+        System.out.println("Ingresar dato que buscas");
+        valor = sc.nextLine();
+        temp = inicio;
+        if (inicio != null) {
+            while (temp != null && Encontrar != true) {
+
+                if (temp.Nombre.equals(valor)) {
+                    Encontrar = true;
+
+                    System.out.println("Dato encontrado " + temp.Nombre
+                            + " se encontro en la posicion" + con);}
+
+                con++;
+                temp = temp.sig;
+
+            }
+            if (!Encontrar) {
+                System.out.print("Valor no encontrado");
+            }
+        } else {
+            System.out.println("Lista vacia");
+        }
+    }
+
+    public static void main(String[] args) {
+        int opt;
+        do {System.out.println("\n1- Agregar"
+                    + "\n2- Mostrar"
+                    + "\n3- Eliminar"
+                    + "\n4- Generar palabra aleatoria"
+                    + "\n5- Buscar nodo"
+                    + "\n6- Salir");
+            switch (opt = sc.nextInt()) {
+                case 1:
+                    add();
+                    break;
+                case 2:
+                    if (inicio == null) {
+                        System.out.println("Lista vacia");
+                    }else {
+                        mostrar("\nLista", inicio);}
+                    break;
+                case 3:
+                    delete("");
+                    break;
+                case 4:
+                    random();
+                    break;
+                case 5:
+                    bnodo("");
+                    break;}} 
+        while (opt != 6);}
+}
