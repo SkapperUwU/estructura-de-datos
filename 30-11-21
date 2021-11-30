@@ -1,0 +1,66 @@
+package prueba2;
+import java.util.Scanner;
+import java.util.Arrays;
+/**@author Ariana Rodriguez 3S12*/
+public class Prueba2 {
+    static class Nodo {char nombre;
+                       char marca;
+                       char precio;
+                       Nodo sig;}
+    static Nodo inicio = null;
+    static Nodo finNodo = null;
+    static Nodo temp = null;
+    static Scanner sc = new Scanner(System.in);
+    static int id = 0;
+    static char lista[];
+    
+    public static void mostrar(Nodo next){
+        Nodo actual = inicio;
+        if (inicio != null){
+            while ( actual!= null){System.out.print(next.nombre + " " + next.marca + " " + next.precio);
+            next = next.sig;}                 
+        } else {
+        }}
+    
+    
+    
+ public static void add(){
+     if (inicio == null){
+            id ++;
+            inicio =new Nodo();
+            System.out.println("Ingresa los valores");
+            System.out.println("Nombre");
+            char nombre = sc.next().charAt(0);
+            inicio.nombre=nombre;
+            System.out.println("Marca");
+            char marca = sc.next().charAt(0);
+            System.out.println("Precio");
+            char precio = sc.next().charAt(0);
+            inicio.precio=precio;
+            char lista[] = {nombre,marca,precio};
+            lista = new char[3];
+            System.out.println(Arrays.toString(lista));
+            System.out.println();
+            System.out.println(Arrays.asList(lista));
+            
+        }else{
+            
+        }}    
+    
+    
+    public static void main(String[] args) {
+        int opt;
+        do{System.out.println("\n1- Agregar"
+                            + "\n2- Mostrar"
+                            + "\n3- Salir"); 
+        switch(opt = sc.nextInt()) {
+                case 1:
+                    add();
+                break;
+                case 2:
+                    if (inicio==null){System.out.println("Lista vacia");
+                                }else {mostrar(inicio);}
+                    break;} 
+        } while (opt!=3);    
+    }
+}
