@@ -1,0 +1,83 @@
+package proyecto1;
+import java.util.Scanner;
+/*@author Ariana Rodriguez 3S12*/
+public class Proyecto1 {
+    static Scanner sc = new Scanner(System.in);
+    static class Nodo {String Nombre;
+                        Nodo sig;}
+    static Nodo inicio = null;
+    static Nodo reco1 = null;
+    static Nodo reco2= null;
+ 
+    public static void add() {       
+        for (int i = 0; i < 5; i++) {
+            if (inicio == null) {
+                inicio = new Nodo();
+                int dato = (int)(Math.random()*1000+500);
+                String c = dato + "";
+                inicio.Nombre = c;
+                inicio.sig = null;
+            } else {
+                Nodo temp;
+                temp = new Nodo();
+                int dato = (int)(Math.random()*1000+500);
+                String c = dato + "";
+                temp.Nombre=c;
+                temp.sig=inicio;
+                inicio = temp;
+            }   
+        }
+        System.out.println("Datos agregados");
+    }
+    
+
+    public static void mostrar(String name, Nodo next){
+        System.out.println(name+" ");
+        while(next != null){
+            System.out.print(next.Nombre + " ");
+            next = next.sig;
+        }
+    }  
+   
+    public static void ordenar(){
+        reco1= inicio;
+        reco2= reco1.sig;
+        while (reco2.sig!=null) {
+            
+        
+        }
+        reco1=reco2;
+        reco2=reco2.sig;
+    }
+    
+    
+    public static void main(String[] args) {
+        int opt;
+        do{System.out.println("\n1- Agregar"
+                            + "\n2- Mostrar"
+                            + "\n3- Ordenar"
+                            + "\n4- Eliminar números repetidos"
+                            + "\n5- Agregar números faltantes"
+                            + "\n6- Salir"); 
+
+        switch(opt = sc.nextInt()) {
+                case 1:
+                    add();
+                break;
+                case 2:
+                    if (inicio == null) {
+                        System.out.println("Lista vacia");
+                    }else {mostrar("\nLista", inicio);}
+                break;
+                case 3:
+                    ordenar();
+                break;
+                case 4:
+                
+                break;
+                case 5:
+
+                break;} 
+        } while (opt!=6);    
+    }   
+}
