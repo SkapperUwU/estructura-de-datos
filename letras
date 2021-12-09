@@ -1,0 +1,82 @@
+package proyecto1;
+import java.util.Random;
+import java.util.Scanner;
+public class Proyecto1{
+    public static void main(String[] args) {
+            NodoW  l;
+            l = new NodoW();
+            int opt=0;
+    do{Scanner sc = new Scanner(System.in);         
+            System.out.println("1  - Agregar palabra\n"
+                                +"2  - Mostrar\n"
+                                +"3  - Ordenar\n"
+                                +"4  - Salir\n");  
+             switch (opt = sc.nextInt()){
+                 case 1:
+                         l.agregar();
+                 break;
+                 case 2:
+                         l.mostrar();
+                 break;
+                 case 3:
+                  l.ordenar();
+                     break;}
+             }while(opt !=4);}}
+class NodoW {nodo inicio;
+                nodo fin;
+                
+    public void agregar(){
+        int can = 5;
+        String [] z = new String [can];
+        Random random = new Random();
+        if (inicio == null) {
+            inicio = new nodo();
+            char[] ca = {(char) (random.nextInt(26) + 'a')};
+            char[] ce = {(char) (random.nextInt(26) + 'a')};
+            char[] ci = {(char) (random.nextInt(26) + 'a')};
+            char[] co = {(char) (random.nextInt(26) + 'a')};
+            for (int i = 0; i < can; i++) {
+                z[i] = co[(int) ((Math.random() * ((ca.length - 1) - 0 + 1) + 0))]+ " "
+                        + ce[(int) ((Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                        + ce[(int) ((Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                        + ci[(int) ((Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " ";
+                inicio.dato = z[i];}
+            inicio.sig = null;
+            fin = inicio;
+        } else {nodo tem;
+            tem = new nodo();
+            char[] ca = {(char) (random.nextInt(26) + 'a')};
+            char[] ce = {(char) (random.nextInt(26) + 'a')};
+            char[] ci = {(char) (random.nextInt(26) + 'a')};
+            char[] co = {(char) (random.nextInt(26) + 'a')};
+            for (int q = 0; q < can; q++) {
+                z[q] = ce[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                        + ce[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                        + ci[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                        + co[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " ";
+                tem.dato = z[q];}
+            fin.sig = tem;
+            tem.sig = null;
+            fin = tem;}}
+    public void mostrar(){
+       nodo actual= new nodo();
+      actual= inicio;
+        while (actual != null) {
+            System.out.println(actual.dato + " ");
+            actual = (nodo)actual.sig;}}
+    public void ordenar(){
+          for (int i = 1; i <= 4; i++) {
+            String aux;     
+        nodo actual = inicio;
+        nodo siguiente = actual.sig;
+            if(inicio!=null){               
+                while (actual.sig != null) {
+                    if (actual.dato!=siguiente.dato){
+                        aux = actual.dato;
+                        actual.dato = siguiente.dato;
+                        siguiente.dato = aux;}
+                        actual = siguiente;
+                        siguiente = actual.sig;}}}}}
+
+class nodo {String dato;      
+            nodo sig;}
