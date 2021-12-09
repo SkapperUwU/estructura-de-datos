@@ -1,0 +1,96 @@
+package listanumeros;
+import java.util.Scanner;
+public class LISTANUMEROS {
+    public static void main(String[] args) {
+            NodoN l;
+            l = new NodoN();
+            int opt=0;
+  do{Scanner sc = new Scanner(System.in);
+            System.out.println("\n"
+                    +"1  - Agregar numeros\n"
+                    +"2  - Ordenar\n"
+                    +"3  - Eliminar repetidos\n"
+                    +"4  - Agregar numeros faltantes\n"
+                    +"5  - Mostrar\n"
+                    +"6  - Salir\n");   
+             switch (opt = sc.nextInt()){
+                 case 1:
+                     int max = 500;
+                     int min= 1;
+                     for( int i=1; i<=500; i++) {
+                         int xd =(int) (Math.random()*(max-min+1)+min);
+                          l.numeros(xd);} 
+                 break;
+                 case 2:
+                    l.ordenar();
+                 break;
+                 case 3:
+                     l.eliminar();
+                 break;
+                 case 4:
+                     l.agregarF();
+                 break;
+                 case 5: 
+                      l.mostrar();
+                 break;}
+             }while(opt !=6);}}
+
+class NodoN {nodo primero;
+             nodo ultimo;
+    public void numeros (int we){
+        nodo temp = new nodo();
+        temp.we=we;
+        if(primero == null){
+            primero= temp;
+            primero.sig= null;
+            ultimo= primero;
+        }else{ultimo.sig= temp;
+            temp.sig=null;
+            ultimo= temp;}}
+    public void eliminar(){
+             int aux;
+             nodo actual = primero;
+             nodo siguiente = actual.sig;
+             nodo xd= new nodo();
+            if(primero!=null){
+                while (actual.sig != null) {
+                    if (actual.we == siguiente.we){
+                        aux = xd.we;
+                        actual.we = siguiente.we;
+                        siguiente.we = aux;}
+                    actual = siguiente;
+                    siguiente = siguiente.sig;}}}    
+     public void ordenar(){        
+        for (int i = 1; i <= 5; i++){
+            int aux;
+                nodo actual = primero;
+                nodo siguiente = actual.sig;
+            if(primero!=null){
+                while (actual.sig != null) {
+                    if (actual.we < siguiente.we){
+                        aux = actual.we;
+                        actual.we = siguiente.we;
+                        siguiente.we = aux;}
+                    actual = siguiente;
+                    siguiente = actual.sig;}}}}
+        public void mostrar(){
+            nodo ac = new nodo();
+            ac= primero;
+                while(ac !=null){
+                    System.out.println(ac.we);
+                    ac= ac.sig;}}
+        
+        public void agregarF(){
+            int aux;
+            nodo actual = primero;
+            nodo siguiente = actual.sig;
+            if(primero!=null){
+                while (actual.sig == null) {
+                    if (actual.we == siguiente.we){
+                        aux = actual.we;
+                        actual.we = siguiente.we;
+                        siguiente.we = aux;}
+                    actual = siguiente;
+                    siguiente = siguiente.sig;}}}}
+        class nodo {nodo sig;
+                int we;}
