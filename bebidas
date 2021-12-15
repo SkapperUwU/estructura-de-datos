@@ -1,0 +1,97 @@
+package tienda;
+import java.util.Scanner;
+public class Tienda {
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+            Scanner sc1 = new Scanner(System.in);
+            Scanner sc2 = new Scanner(System.in);
+            NodosC l;
+            l = new NodosC();
+            int opt=0;
+            do{System.out.println("\n1 - Agregar datos"
+                                 +"\n2 - Mostar"
+                                 +"\n3 - Salir");    
+             switch (opt = sc.nextInt()){
+                    case 1:
+                        System.out.println("Ingrese el nombre de la bebida");
+                        String Nombre=sc1.nextLine();
+                             l.agregar(Nombre);
+                        System.out.println("Ingrese el nombre de la marca");
+                        String marca=sc2.nextLine();
+                             l.addmarca(marca);
+                        System.out.println("Ingrese el precio");
+                        String pr=sc2.nextLine();
+                               l.tnomaro(pr);
+                    break;
+                    case 2:
+                        l.mostrar();
+                    break;}
+             
+        }while(opt !=3);}
+    }
+    
+class NodosC {
+nodo primero;
+nodo ultimo;
+nodo mar2;
+nodo mark;
+nodo pre2;
+nodo cost;
+           
+public void agregar( String Nombre ){
+       nodo temp= new nodo();
+       temp.Nombre= Nombre;
+       if(primero== null){primero= temp;
+            primero.sig=null;
+            ultimo = primero;
+       }else{ultimo.sig = temp;
+        temp.sig = null;
+        ultimo = temp;}}
+
+       public void addmarca( String marca ){
+       nodo temp= new nodo();
+       temp.marca= marca;
+       if(mar2== null){
+          mar2= temp;
+        mar2.sig1=null;
+        mark = mar2;
+       }else{
+        mark.sig1 = temp;
+        temp.sig1 = null;
+        mark = temp;}}   
+     
+       public void tnomaro( String Id ){
+            nodo temp= new nodo();
+            temp.Id= Id;
+            if(pre2== null){
+               pre2= temp;
+               pre2.sig2=null;
+               cost = pre2;
+            }else{cost.sig2 = temp;
+             temp.sig2 = null;
+             cost = temp;}}
+       
+public void mostrar(){
+    nodo nom = new nodo();
+    nom= primero;
+    nodo mar = new nodo();
+    mar= mar2;
+       nodo pre = new nodo();
+    pre= pre2;
+    int cont=0;
+    while(nom != null){
+        cont++;
+        System.out.println(" "+"["+cont+"]"+" "+"["+nom.Nombre+"]"+" "+" "+"["+mar.marca+"]"+" "+" "+"["+pre.Id+"]"+" ");
+        nom = (nodo) nom.sig;
+         mar = (nodo) mar.sig1;
+         pre= (nodo) pre.sig2;
+    }
+}}
+
+class nodo {String Id;
+            String marca;
+            String Nombre;
+            float precio;
+            nodo sig;
+            nodo sig1;
+            nodo sig2;}
